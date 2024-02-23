@@ -25,7 +25,8 @@ while True:
     eng = input('영어 단어 등록 (종료는 quit) : ')
     if eng == 'quit':
         break
-    elif dict.get(eng) != None:
+    #elif dict.get(eng) != None:
+    elif eng in dict:
         print(f'{eng}는 이미 등록된 단어 입니다\n')
         continue
     mean = input(f"{eng}의 뜻입력 (종료는 quit) : ")
