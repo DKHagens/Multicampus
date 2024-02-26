@@ -1,0 +1,7 @@
+Hi!
+
+Variable & Constant
+data type & operator
+if statement
+for statement
+while
