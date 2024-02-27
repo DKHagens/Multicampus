@@ -75,8 +75,3 @@ while start != 'q':
         start = input('저장 1, 출력 2, 종료 q : ')
 
 name = 'mem.txt'
-
-
-
-
-
