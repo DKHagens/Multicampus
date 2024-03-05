@@ -10,15 +10,17 @@ with open('data/s.txt','r',encoding='utf-8') as f:
 path = 'yesterday.txt'
 with open(path, 'r', encoding = 'utf-8') as f:
     voc = {}
-    for data in f.readlines():
-        data = data.strip()
-        text_list = data.lower().split(' ')
-        text_list = [x for x in text_list if x]
-        for key in text_list:
-            if key in voc:
-                voc[key] += 1
-            else:
-                voc[key] = 1
+    # for data in f.readlines():
+    #     data = data.strip()
+    #     text_list = data.lower().split(' ')
+    #     text_list = [x for x in text_list if x]
+    text_list = f.read().lower().split()
+    print(text_list)
+    for key in text_list:
+        if key in voc:
+            voc[key] += 1
+        else:
+            voc[key] = 1
     keys_list = sorted(voc.keys())
     voc_list = '[출력결과 : 단어별 빈도]\n'
     for keys in keys_list:
@@ -29,23 +31,23 @@ w.close()
 
 
 #3
-def add(path, name):
-    with open(path,'r',encoding='utf-8') as f:
+def my_sum(input_file, name):
+    with open(input_file,'r') as f:
         rst = ''
         for data in f.readlines():
             a = int(data.split(' ')[0])
             b = int(data.split(' ')[1])
             rst += f"{a}+{b}={a+b:.1f}\n"
-        w = open(name, 'w', encoding='utf-8')
-        w.write(rst)
-        w.close()
+        with open(name, 'w') as w:
+            w.write(rst)
 
-path = 'data/number.txt'
-add(path, 'result.txt')
+input_file = 'data/number.txt'
+my_sum(input_file, 'result.txt')
 
 #4
 
 def input_member(fname):
+#이거 안받고 nam을 받는대로 쓰는 것도 방법
     name_str = ''
     while True:
         nam = input('멤버를 입력하세요.(종료는 q) : ')
@@ -60,18 +62,18 @@ def output_member(fname):
     with open(fname, 'r', encoding='utf-8') as f:
         print(f.read())
 
-start = input('저장 1, 출력 2, 종료 q : ')
-while start != 'q':
+
+while True:
+    start = input('저장 1, 출력 2, 종료 q : ')
     if start == '1':
         fname = input('멤버 명단을 저장할 파일명을 입력하세요. : ')
         input_member(fname)
-        start = input('저장 1, 출력 2, 종료 q : ')
-    if start == '2':
+    elif start == '2':
         fname = input('멤버 명단이 저장된 파일명을 입력하세요. : ')
         output_member(fname)
-        start = input('저장 1, 출력 2, 종료 q : ')
+    elif start == 'q':
+        break
     else:
         print('다시 입력해주세요.')
-        start = input('저장 1, 출력 2, 종료 q : ')
 
 name = 'mem.txt'
